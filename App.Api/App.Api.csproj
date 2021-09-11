@@ -24,4 +24,8 @@
     <ProjectReference Include="..\App.Persistence\App.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="_services\" />
+  </ItemGroup>
+
 </Project>

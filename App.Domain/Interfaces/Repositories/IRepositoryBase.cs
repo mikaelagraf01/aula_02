@@ -13,5 +13,6 @@ namespace App.Domain.Interfaces.Repositories
         void Delete(Guid id);
         int SaveChanges();
         DbContext Context();
+        object Query(object p, object id);
     }
 }

@@ -73,5 +73,10 @@ namespace App.Persistence.Repositories
         {
             return _dbContextEntity;
         }
+
+        public object Query(object p, object id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
