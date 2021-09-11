@@ -22,17 +22,15 @@ namespace App.Application.Services
             return obj;
         }
 
-        public PessoaService(IRepositoryBase<Pessoa> repository)
+        public List<Pessoa> listaPessoas(string nome, int pesoMaiorQue, int pesoMenorQue)
         {
-            _repository = repository;
-        }
+            nome = nome ?? "";
+            return _repository.Query(x =>
 
-
-        public List<Pessoa> listaPessoas()
-        {
-
-            return _repository.Query(x => 1 == 1)
-            .Select(p => new Pessoa
+            x.Nome.ToUpper().Contains (nome.ToUpper()) &&
+            (pesoMaiorQue == 00 || x.Peso >= pesoMaiorQue) &&
+            (pesoMenorQue ==0 || x.Peso <= pesoMenorQue) 
+            ).Select(p => new Pessoa
             {
                 Id = p.Id,
                 Nome = p.Nome,
@@ -41,7 +39,7 @@ namespace App.Application.Services
                 {
                     Nome = p.Cidade.Nome
                 }
-            }).ToList();
+            }).OrderByDescending(x=> x.Nome).ToList();
         }
         public void Salvar(Pessoa obj)
         {

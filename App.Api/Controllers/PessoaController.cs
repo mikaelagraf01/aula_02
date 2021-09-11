@@ -27,9 +27,9 @@ namespace App.Api.Controllers
         }
 
         [HttpGet("ListaPessoas")]
-        public JsonResult ListaPessoas()
+        public JsonResult ListaPessoas(string nome, int pessoaMaiorQue, int pesoMenorQue)
         {
-            return Json(_service.listaPessoas());
+            return Json(_service.listaPessoas(nome, pessoaMaiorQue, pesoMenorQue));
         }
         [HttpGet("BuscarPorId")]
         public JsonResult BuscaPorId(Guid id)
@@ -46,6 +46,8 @@ namespace App.Api.Controllers
                 Peso = peso,
                 Ativo = ativo,
                 CidadeId = IdCidade
+
+               
             };
             _service.Salvar(obj);
             return Json(true);

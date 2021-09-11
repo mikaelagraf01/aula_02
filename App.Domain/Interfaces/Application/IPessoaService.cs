@@ -8,7 +8,7 @@ namespace App.Domain.Interfaces.Application
     {
         Pessoa BuscaPorId(Guid id);
 
-        List<Pessoa> listaPessoas();
+        List<Pessoa> listaPessoas(string nome, int pessoaMaiorQue, int pesoMenorQue);
         void Salvar(Pessoa obj);
         void Remover (Guid id);
         
